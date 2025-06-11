@@ -1,0 +1,21 @@
+on late-init
+    chown root root /sys/class/qcom-haptics/primitive_duration
+    chmod 0600 /sys/class/qcom-haptics/primitive_duration
+
+on boot
+    chmod 0666 /dev/aac_richtap_dev
+    chown root root /dev/aac_richtap_dev
+
+service vendor.qti.vibrator /vendor/bin/hw/vendor.qti.hardware.vibrator.service
+    class hal
+    user root
+    group root input
+    setenv RICHTAP_DEVICE_PATH  /dev/aac_richtap_dev
+    # setenv RICHTAP_DEVICE_PATH  /dev/aac_richtap
+    setenv ENV_RICHTAP_CONFIG_PATH /odm/etc/aac_richtap.config
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/sbin
+    disabled
+    seclabel u:r:recovery:s0
+
+on property:sys.boot_completed=1
+    setprop vendor.haptic.calibrate.done 1

@@ -1,0 +1,14 @@
+system                                                  /system                erofs   ro                                                                                                     wait,slotselect,logical
+system_ext                                              /system_ext            erofs   ro                                                                                                     wait,slotselect,logical
+system_dlkm                                             /system_dlkm           erofs   ro                                                                                                     wait,slotselect,logical
+product                                                 /product               erofs   ro                                                                                                     wait,slotselect,logical
+vendor                                                  /vendor                erofs   ro                                                                                                     wait,slotselect,logical
+vendor_dlkm                                             /vendor_dlkm           erofs   ro                                                                                                     wait,slotselect,logical
+odm                                                     /odm                   erofs   ro                                                                                                     wait,slotselect,logical
+/dev/block/bootdevice/by-name/metadata                  /metadata              f2fs    noatime,nosuid,nodev,discard                                                                           wait,check,formattable,wrappedkey
+/dev/block/bootdevice/by-name/userdata                  /data                  f2fs    noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065,fsync_mode=nobarrier,compress_mode=user    wait,check,formattable,fileencryption=ice,wrappedkey,keydirectory=/metadata/vold/metadata_encryption,quota,fscompress
+
+/dev/block/bootdevice/by-name/boot                      /boot                  emmc    defaults                                                                                               defaults
+/dev/block/bootdevice/by-name/misc                      /misc                  emmc    defaults                                                                                               defaults
+/dev/block/bootdevice/by-name/logfs                     /logfs                 vfat    nosuid,nodev                                                                                           wait
+/dev/block/bootdevice/by-name/mzlogfs                   /mzlogfs               ext4    noatime,nosuid,nodev,barrier=1                                                                         wait
