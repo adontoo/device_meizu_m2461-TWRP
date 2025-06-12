@@ -14,3 +14,6 @@ ro.postinstall.fstab.prefix=/system
 ro.recovery.usb.vid=18D1
 ro.recovery.usb.adb.pid=D001
 ro.recovery.usb.fastboot.pid=4EE0
+
+# Screen touch mapping
+vendor.screen.touch_mapping=1
