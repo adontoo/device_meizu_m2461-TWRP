@@ -34,7 +34,7 @@ Works:
 - [X] Mount /data
 
 ## Build it yourself
-1. Fix touch screen mapping -> [commit](https://github.com/adontoo/android_bootable_recovery-twrp-12.1/commit/1af9b25c7f076d0f51f50e322df2fa4d9c1d5c5d)
+1. Fix touch screen mapping -> [commit](https://github.com/adontoo/android_bootable_recovery_twrp-14.1/commit/262b9affa0d40ebae92c1878a69005a7269aca06)
 
 ## How to use it
 
