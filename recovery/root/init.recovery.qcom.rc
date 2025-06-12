@@ -27,7 +27,6 @@
 
 on init
     setprop prepdecrypt.setpatch true
-    setprop prepdecrypt.loglevel 2
     start vendor.boot-qti
 
 on early-fs
