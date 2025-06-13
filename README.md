@@ -20,7 +20,7 @@ Camera  | 200MP (main), 5MP (floating telephoto), 13MP (ultra-wide), 32MP (front
 
 ## Features
 Not works:
-- [ ] Decryption
+You tell me.
 
 Works:
 - [X] ADB
@@ -31,7 +31,7 @@ Works:
 - [X] Fasbootd
 - [X] MTP
 - [X] USB OTG
-- [X] Mount /data
+- [X] Decryption
 
 ## Build it yourself
 1. Fix touch screen mapping -> [commit](https://github.com/adontoo/android_bootable_recovery_twrp-14.1/commit/262b9affa0d40ebae92c1878a69005a7269aca06)
