@@ -35,9 +35,6 @@ fi
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export LC_ALL="C"
- 	#export ALLOW_MISSING_DEPENDENCIES=true
-	
-	# "m2461" Specific
 	export FOX_AB_DEVICE=1
 	export OF_AB_DEVICE_WITH_RECOVERY_PARTITION=1
 	export OF_RECOVERY_AB_FULL_REFLASH_RAMDISK=1
@@ -57,13 +54,9 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_NO_MIUI_PATCH_WARNING=1
 	export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
 	export OF_QUICK_BACKUP_LIST="/init_boot;/vendor_boot;/recovery;/persist;/super;"
-
-	export FOX_INSTALLER_DEBUG_MODE=1
-
 	export FOX_USE_GREP_BINARY=1
 	export FOX_USE_BUSYBOX_BINARY=1
 	export FOX_USE_XZ_UTILS=1
-	export FOX_USE_NANO_EDITOR=1
 	export OF_FORCE_PREBUILT_KERNEL=1
 	export OF_ENABLE_LPTOOLS=1
 	export OF_ENABLE_ALL_PARTITION_TOOLS=1
@@ -83,11 +76,12 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_FSCK_EROFS_BINARY=1
 	export FOX_USE_PATCHELF_BINARY=1
 	export OF_OPTIONS_LIST_NUM=6
- 
-  # R11.3 Settings
+	export OF_FORCE_USE_RECOVERY_FSTAB=1
+
+	# For Meizu 21
 	export FOX_VARIANT="Meizu_21"
+	export FOX_MAINTAINER_PATCH_VERSION=$(date +%y%m%d)
 	export OF_MAINTAINER="Adontoo"
-	export OF_MAINTAINER_AVATAR="/tmp/misc/Adontoo.png"
 	export OF_MAGISK="/tmp/misc/Magisk-v29.0.zip"
 	export FOX_USE_SPECIFIC_MAGISK_ZIP=/tmp/misc/Magisk-v29.0.zip
 
@@ -99,26 +93,17 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_HIDE_NOTCH=1
 	export OF_ALLOW_DISABLE_NAVBAR=0
 
-	# Avatar Settings
-    if [ -n "$OF_MAINTAINER_AVATAR" ]; then
-        if [ ! -f "$OF_MAINTAINER_AVATAR" ]; then
-              # some colour codes
-              RED='\033[0;31m'
-              GREEN='\033[0;32m'
-              ORANGE='\033[0;33m'
-              BLUE='\033[0;34m'
-              PURPLE='\033[0;35m'
-              echo -e "${RED}-- File \"$OF_MAINTAINER_AVATAR\" not found  ...${NC}"
-              echo -e "${ORANGE}-- Downloading...${NC}"
-              mkdir -p /tmp/misc
-              wget -O /tmp/misc/Adontoo.png https://avatars.githubusercontent.com/u/32664751?v=4
-              echo -e "${BLUE}-- Successfully Downloaded the Avatar Image \"$OF_MAINTAINER_AVATAR\" ...${NC}"
-              echo -e "${PURPLE}-- Using A Custom Maintainer Avatar from the Downloaded Image \"$OF_MAINTAINER_AVATAR\" ...${NC}"
-              echo -e "${GREEN}-- Done!"
-        fi
-    fi
+	# Make Fox theme as Black
+	F=$(find "device" -name "m2481")
+	\cp -fp bootable/recovery/gui/theme/portrait_hdpi/splash.xml "$F"/recovery/root/twres/splash.xml
+	sed -i 's/value="#D34E38"/value="#000000"/g' "$F"/recovery/root/twres/splash.xml
+	sed -i 's/value="#FF8038"/value="#000000"/g' "$F"/recovery/root/twres/splash.xml
     
-	# Check if Magisk.zip exist。
+	# Check if Magisk.zip exist
+	if [ -f "/home/adontoo/android/Magisk-v29.0.zip" ]; then
+		mkdir -p /tmp/misc
+		cp -f /home/adontoo/android/Magisk-v29.0.zip /tmp/misc/Magisk-v29.0.zip
+	fi
     if [ -n "$FOX_USE_SPECIFIC_MAGISK_ZIP" ]; then
     	if [ ! -f "$OF_MAGISK" ]; then
               # some colour codes
