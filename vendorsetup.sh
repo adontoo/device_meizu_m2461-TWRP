@@ -83,8 +83,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_MAINTAINER="Adontoo"
 	export OF_MAGISK="/tmp/misc/Magisk-v29.0.zip"
 	export FOX_USE_SPECIFIC_MAGISK_ZIP=/tmp/misc/Magisk-v29.0.zip
-
-	# Screen Settings
 	export OF_SCREEN_H=2340
 	export OF_STATUS_H=111
 	export OF_STATUS_INDENT_LEFT=10

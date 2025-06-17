@@ -5,7 +5,6 @@ service vendor.health-default /vendor/bin/hw/android.hardware.health-service.qti
     capabilities WAKE_ALARM BLOCK_SUSPEND
     file /dev/kmsg w
     setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/sbin
-    disabled
     seclabel u:r:recovery:s0
 
 service vendor.charger /vendor/bin/hw/android.hardware.health-service.qti_recovery --charger
@@ -16,5 +15,4 @@ service vendor.charger /vendor/bin/hw/android.hardware.health-service.qti_recove
     capabilities SYS_BOOT WAKE_ALARM BLOCK_SUSPEND
     file /dev/kmsg w
     setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/sbin
-    disabled
     seclabel u:r:recovery:s0

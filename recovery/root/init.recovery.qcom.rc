@@ -48,8 +48,7 @@ on fs
     install_keyring
 
 on boot
-    setprop sys.usb.config adb
-    start vendor.qti.vibrator
+    setprop sys.usb.config adb    
 
 on property:twrp.modules.loaded=true
     # Mount debugfs
@@ -68,15 +67,9 @@ on property:twrp.modules.loaded=true
     umount /firmware
 
 on property:hwservicemanager.ready=true
-    start vendor.qseecomd
-    #start qseecom-service
-    start vendor.keymint-qti
-    #start vendor.keymint-spu-qti
     setprop sys.boot_completed 1
 
 on property:vendor.sys.listeners.registered=true
-    start vendor.gatekeeper_default
-    #start vendor.gatekeeper_spu
-    start vendor.secure_element    
+    start vendor.qti.vibrator
 
 import /init.recovery.qcom_decrypt.rc
