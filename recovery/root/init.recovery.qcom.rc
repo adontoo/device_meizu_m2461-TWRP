@@ -51,9 +51,6 @@ on boot
     setprop sys.usb.config adb    
 
 on property:twrp.modules.loaded=true
-    # Mount debugfs
-    mount debugfs debugfs /sys/kernel/debug
-    chmod 0755 /sys/kernel/debug
     # Mount firmware
     mkdir /firmware
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro
@@ -66,10 +63,9 @@ on property:twrp.modules.loaded=true
     start vendor.health-default
     umount /firmware
 
+on property:ro.crypto.state=encrypted && property:ro.boot.dynamic_partitions=true
+    start prepdecrypt.vendor
+
 on property:hwservicemanager.ready=true
     setprop sys.boot_completed 1
-
-on property:vendor.sys.listeners.registered=true
     start vendor.qti.vibrator
-
-import /init.recovery.qcom_decrypt.rc
