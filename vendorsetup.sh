@@ -76,6 +76,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_PATCHELF_BINARY=1
 	export OF_OPTIONS_LIST_NUM=6
 	export OF_FORCE_USE_RECOVERY_FSTAB=1
+ 	export OF_USE_DMCTL=1
 
 	# For Meizu 21
 	export FOX_VARIANT="Meizu_21"
