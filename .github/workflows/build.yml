@@ -78,8 +78,7 @@ jobs:
         create-symlink: true
 
     - name: Setup environment
-      run: |
-      	export DEBIAN_FRONTEND=noninteractive
+      run: |      	
         sudo apt update
         sudo apt upgrade -y
         sudo apt install -y repo zram-tools git
@@ -88,6 +87,7 @@ jobs:
         sudo sed -i 's/^#PRIORITY=100/PRIORITY=1000/' /etc/default/zramswap
         sudo systemctl restart zramswap
         zramctl
+        export DEBIAN_FRONTEND=noninteractive
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
