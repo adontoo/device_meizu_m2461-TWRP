@@ -1,0 +1,6 @@
+service start_crypto_services /vendor/bin/start_crypto_services.sh
+    class early_hal
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/sbin
+    seclabel u:r:recovery:s0

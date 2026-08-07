@@ -1,7 +1,8 @@
-on init
-    start vendor.secure_element
-
+# Started once qseecomd has registered its listeners; this HAL calls
+# QSEECom_start_app. se_omapi proxies to it, and the Thales weaver and StrongBox
+# transports reach the eSE that way.
 service vendor.secure_element /vendor/bin/hw/android.hardware.secure_element-service.qti
+    disabled
     class hal
     user root
     group nfc root

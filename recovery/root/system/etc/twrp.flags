@@ -32,9 +32,6 @@
 /logfs                 vfat    /dev/block/bootdevice/by-name/logfs                                flags=display="logfs"
 /mzlogfs               ext4    /dev/block/bootdevice/by-name/mzlogfs                              flags=display="mzlogfs"
 
-# Removable storage
-/usb_otg               auto    /dev/block/sdg1                            /dev/block/sdg          flags=fsflags=utf8;display="USB-OTG";storage;wipeingui;removable
-
 /super                 emmc    /dev/block/bootdevice/by-name/super                                flags=backup=1;display="Super";flashimg=1
 
 # Logical partitions
